@@ -1,0 +1,28 @@
+<% layout("/layouts/boilerplate.ejs") %>
+
+    <body>
+        <h3 class="main-heading">Find Relevant Job</h3>
+        <div class="row row-cols-lg-3 row-cols-md-3 row-cols-sm-1 main-container">
+            <% for(let listing of allListings){ %>
+                <a href="/listings/<%= listing._id %>" class="listing-link">
+                    <div class="card col listing-card">
+                        <img class="card-img-top" src="<%= listing.image.url %>" alt="listing_image"
+                            style="height : 20rem">
+                        <div class="card-img-overlay"></div>
+                        <div class="card-body">
+                            <p class="card-text">
+                                <b>
+                                    <%= listing.title %>
+                                </b> <br>
+                                <span>Payment :
+                                    <b>&#8377;
+                                        <%= listing.payment ? listing.payment.toLocaleString("en-IN") : "N/A" %> /-
+                                    </b>
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                </a>
+                <% } %>
+        </div>
+    </body>
